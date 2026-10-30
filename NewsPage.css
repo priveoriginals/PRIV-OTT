@@ -1,0 +1,1935 @@
+/*==================================================
+NEWS & GOSSIPS PAGE
+PART 1
+FOUNDATION + LAYOUT
+==================================================*/
+
+/*==================================
+ROOT
+==================================*/
+
+:root{
+  --ng-bg:#09090f;
+  --ng-surface:#11131d;
+  --ng-surface-2:#171b28;
+  --ng-border:rgba(124,58,237,.22);
+  --ng-border-soft:rgba(255,255,255,.08);
+
+  --ng-primary:#7c3aed;
+  --ng-primary-2:#a855f7;
+  --ng-primary-3:#c026d3;
+  --ng-gradient:linear-gradient(135deg,#6d28d9 0%,#9333ea 45%,#c026d3 100%);
+
+  --ng-text:#ffffff;
+  --ng-text-light:#c5c8d4;
+  --ng-text-muted:#8e93a8;
+
+  --ng-radius:22px;
+  --ng-radius-sm:14px;
+  --ng-radius-xs:10px;
+
+  --ng-shadow:0 10px 35px rgba(0,0,0,.45);
+  --ng-shadow-2:0 18px 60px rgba(0,0,0,.55);
+
+  --ng-transition:.30s ease;
+}
+
+/*==================================
+PAGE
+==================================*/
+
+#news-page{
+  width:100%;
+  background:var(--ng-bg);
+  color:var(--ng-text);
+  padding:20px 0 60px;
+  overflow:hidden;
+}
+
+/*==================================
+CONTAINER
+==================================*/
+
+.ng-container{
+  width:100%;
+  max-width:1500px;
+  margin:0 auto;
+  padding:0 26px;
+  box-sizing:border-box;
+}
+
+/*==================================
+GLOBAL SPACING
+==================================*/
+
+.ng-container > *{
+  margin-bottom:22px;
+}
+
+.ng-container > *:last-child{
+  margin-bottom:0;
+}
+
+/*==================================
+LINKS
+==================================*/
+
+#news-page a{
+  color:inherit;
+  text-decoration:none;
+  transition:var(--ng-transition);
+}
+
+#news-page a:hover{
+  text-decoration:none;
+}
+
+/*==================================
+IMAGES
+==================================*/
+
+
+/*==================================
+BUTTONS
+==================================*/
+
+#news-page button{
+  font:inherit;
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
+
+/*==================================
+BOX SIZING
+==================================*/
+
+#news-page *,
+#news-page *::before,
+#news-page *::after{
+  box-sizing:border-box;
+}
+
+/*==================================
+SELECTION
+==================================*/
+
+::selection{
+  background:#7c3aed;
+  color:#fff;
+}
+
+/*==================================
+FOCUS
+==================================*/
+
+button:focus-visible,
+a:focus-visible{
+  outline:2px solid var(--ng-primary);
+  outline-offset:3px;
+}
+
+/*==================================
+SCROLLBAR
+==================================*/
+
+::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#09090f;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#2b2148;
+  border-radius:30px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:#6d28d9;
+}
+
+/*==================================
+MOTION
+==================================*/
+
+html{
+  scroll-behavior:smooth;
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+/*==================================
+HERO WRAPPER
+==================================*/
+
+.ng-hero{
+  width:100%;
+}
+
+/*==================================
+HERO MAIN
+==================================*/
+
+.ng-hero-main{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  gap:18px;
+  align-items:stretch;
+}
+
+/*==================================
+SLIDER BASE
+==================================*/
+
+.ng-slider{
+  position:relative;
+  min-width:0;
+  border-radius:var(--ng-radius);
+  overflow:hidden;
+  background:var(--ng-surface);
+  border:1px solid var(--ng-border-soft);
+  box-shadow:var(--ng-shadow);
+  min-height:420px;
+}
+
+.ng-slider-track{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+
+/*==================================
+SLIDE
+==================================*/
+
+.ng-slide{
+  position:relative;
+  width:100%;
+  min-height:420px;
+  display:none;
+}
+
+.ng-slide.is-active{
+  display:block;
+}
+
+.ng-slide-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.ng-slide-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.78) 100%),
+    radial-gradient(circle at 20% 20%, rgba(124,58,237,.16), transparent 35%);
+  z-index:1;
+}
+
+.ng-slide-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:28px;
+}
+
+/*==================================
+SLIDE TEXT
+==================================*/
+
+.ng-slide-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  min-height:28px;
+  padding:0 12px;
+  margin-bottom:14px;
+  border-radius:999px;
+  background:rgba(124,58,237,.85);
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.ng-slide-title{
+  margin:0;
+  max-width:780px;
+  font-size:20px;
+  font-weight:800;
+  line-height:1.08;
+  letter-spacing:-.03em;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.45);
+}
+
+.ng-slide-desc{
+  margin:14px 0 0;
+  max-width:720px;
+  font-size:12px;
+  line-height:1.8;
+  color:var(--ng-text-light);
+  text-shadow:0 1px 8px rgba(0,0,0,.35);
+}
+
+.ng-slide-meta{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:18px;
+  margin-top:18px;
+  color:rgba(255,255,255,.88);
+  font-size:13px;
+}
+
+.ng-slide-meta span{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/*==================================
+SLIDER NAV
+==================================*/
+
+.ng-slider-prev,
+.ng-slider-next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:5;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:var(--ng-transition);
+}
+
+.ng-slider-prev:hover,
+.ng-slider-next:hover{
+  background:rgba(124,58,237,.85);
+  transform:translateY(-50%) scale(1.06);
+}
+
+.ng-slider-prev{
+  left:16px;
+}
+
+.ng-slider-next{
+  right:16px;
+}
+
+/*==================================
+DOTS
+==================================*/
+
+.ng-slider-dots{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:16px;
+  z-index:5;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:0 16px;
+}
+
+.ng-slider-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.5);
+  background:rgba(255,255,255,.18);
+  transition:var(--ng-transition);
+}
+
+.ng-slider-dot.is-active{
+  background:#fff;
+  border-color:#fff;
+  transform:scale(1.15);
+}
+
+/*==================================
+SIDE HERO
+==================================*/
+
+.ng-hero-side{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/*==================================
+SIDE HERO CARD
+==================================*/
+
+.ng-hero-mini{
+  position:relative;
+  min-height:97px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--ng-surface);
+  border:1px solid var(--ng-border-soft);
+  box-shadow:var(--ng-shadow);
+}
+
+.ng-hero-mini img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.72);
+}
+
+.ng-hero-mini::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.22) 58%, rgba(0,0,0,.08) 100%);
+}
+
+.ng-hero-mini-content{
+  position:relative;
+  z-index:2;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:97px;
+}
+
+.ng-hero-mini-title{
+  margin:0;
+  font-size:14px;
+  font-weight:700;
+  line-height:1.35;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.45);
+}
+
+.ng-hero-mini-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  min-height:24px;
+  padding:0 10px;
+  margin-bottom:8px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#fff;
+}
+
+/*==================================
+FILTER SECTION
+==================================*/
+
+.ng-filter-section{
+  width:100%;
+  position:relative;
+}
+
+/*==================================
+FILTER TABS
+==================================*/
+
+.ng-filter-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+/*==================================
+FILTER BUTTON
+==================================*/
+
+.ng-filter-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:42px;
+  padding:0 18px;
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--ng-text-light);
+  font-size:14px;
+  font-weight:600;
+  line-height:1;
+  white-space:nowrap;
+  transition:var(--ng-transition);
+}
+
+.ng-filter-btn:hover{
+  background:rgba(124,58,237,.10);
+  border-color:rgba(124,58,237,.30);
+  color:#fff;
+  transform:translateY(-1px);
+}
+
+.ng-filter-btn.is-active{
+  background:var(--ng-gradient);
+  border-color:transparent;
+  color:#fff;
+  box-shadow:0 10px 24px rgba(124,58,237,.25);
+}
+
+/*==================================
+LAYOUT
+==================================*/
+
+.ng-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  gap:18px;
+  align-items:start;
+}
+
+/*==================================
+MAIN
+==================================*/
+
+.ng-main{
+  min-width:0;
+}
+
+/*==================================
+SIDEBAR
+==================================*/
+
+.ng-sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  position:sticky;
+  top:18px;
+}
+
+/*==================================
+WIDGET
+==================================*/
+
+.ng-widget{
+  background:var(--ng-surface);
+  border:1px solid var(--ng-border-soft);
+  border-radius:var(--ng-radius);
+  box-shadow:var(--ng-shadow);
+  padding:18px;
+  overflow:hidden;
+}
+
+.ng-widget-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.ng-widget-title{
+  margin:0;
+  font-size:20px;
+  font-weight:800;
+  line-height:1.2;
+  color:#fff;
+  letter-spacing:-.02em;
+}
+
+.ng-widget-viewall{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ng-primary-2);
+}
+
+.ng-widget-viewall:hover{
+  color:#fff;
+}
+
+/*==================================
+LIST WRAPPER
+==================================*/
+
+.ng-list-section{
+  width:100%;
+}
+
+.ng-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/*==================================
+PAGINATION WRAP
+==================================*/
+
+.ng-pagination-wrap{
+  margin-top:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.ng-pagination{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+}
+
+/*==================================
+RESPONSIVE
+==================================*/
+
+@media(max-width:1200px){
+  .ng-hero-main,
+  .ng-layout{
+    grid-template-columns:minmax(0,1fr) 330px;
+  }
+
+  .ng-slide-title{
+    font-size:36px;
+  }
+}
+
+@media(max-width:991px){
+  #news-page{
+    padding:16px 0 48px;
+  }
+
+  .ng-container{
+    padding:0 20px;
+  }
+
+  .ng-hero-main,
+  .ng-layout{
+    grid-template-columns:1fr;
+  }
+
+  .ng-hero-side{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+
+  .ng-sidebar{
+    position:static;
+  }
+
+  .ng-slide-title{
+    font-size:32px;
+  }
+
+  .ng-slide-desc{
+    font-size:15px;
+  }
+
+  .ng-widget-title{
+    font-size:18px;
+  }
+}
+
+@media(max-width:767px){
+  #news-page{
+    padding:12px 0 40px;
+  }
+
+  .ng-container{
+    padding:0 16px;
+  }
+
+  .ng-slider{
+    min-height:360px;
+  }
+
+  .ng-slide{
+    min-height:360px;
+  }
+
+  .ng-slide-content{
+    min-height:360px;
+    padding:22px;
+  }
+
+  .ng-slide-title{
+    font-size:26px;
+  }
+
+  .ng-slide-desc{
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  .ng-slide-meta{
+    gap:14px;
+    font-size:12px;
+  }
+
+  .ng-slider-prev,
+  .ng-slider-next{
+    width:40px;
+    height:40px;
+  }
+
+  .ng-hero-side{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .ng-filter-tabs{
+    gap:8px;
+  }
+
+  .ng-filter-btn{
+    height:38px;
+    padding:0 15px;
+    font-size:13px;
+  }
+
+  .ng-widget{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .ng-widget-title{
+    font-size:17px;
+  }
+}
+
+@media(max-width:480px){
+  .ng-container{
+    padding:0 14px;
+  }
+
+  .ng-slider{
+    min-height:320px;
+  }
+
+  .ng-slide{
+    min-height:320px;
+  }
+
+  .ng-slide-content{
+    min-height:320px;
+    padding:18px;
+  }
+
+  .ng-slide-title{
+    font-size:22px;
+  }
+
+  .ng-slide-desc{
+    font-size:13px;
+    line-height:1.65;
+  }
+
+  .ng-slide-badge{
+    min-height:24px;
+    font-size:10px;
+  }
+
+  .ng-hero-side{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .ng-hero-mini{
+    min-height:88px;
+  }
+
+  .ng-hero-mini-content{
+    min-height:88px;
+    padding:12px;
+  }
+
+  .ng-hero-mini-title{
+    font-size:12px;
+  }
+
+  .ng-widget-title{
+    font-size:16px;
+  }
+
+  .ng-filter-tabs{
+    gap:7px;
+  }
+
+  .ng-filter-btn{
+    height:36px;
+    padding:0 14px;
+    font-size:12px;
+  }
+
+  .ng-pagination{
+    gap:6px;
+  }
+}
+
+/*==================================================
+NEWS & GOSSIPS PAGE
+PART 2
+LIST CARDS + SIDEBAR WIDGETS
+==================================================*/
+
+/*==================================
+NEWS LIST CARD
+==================================*/
+
+.ng-card{
+  display:flex;
+  align-items:stretch;
+  gap:14px;
+  padding:14px;
+  border-radius:18px;
+  background:var(--ng-surface);
+  border:1px solid var(--ng-border-soft);
+  box-shadow:var(--ng-shadow);
+  overflow:hidden;
+  transition:var(--ng-transition);
+}
+
+.ng-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(124,58,237,.24);
+  background:var(--ng-surface-2);
+}
+
+/*==================================
+THUMBNAIL
+==================================*/
+
+.ng-card-thumb{
+  position:relative;
+  flex:0 0 240px;
+  width:240px;
+  border-radius:14px;
+  overflow:hidden;
+  background:#151823;
+  min-height:150px;
+}
+
+.ng-card-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.35s;
+}
+
+.ng-card:hover .ng-card-thumb img{
+  transform:scale(1.05);
+}
+
+/*==================================
+THUMB BADGES
+==================================*/
+
+.ng-thumb-badges{
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index:3;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  max-width:calc(100% - 20px);
+}
+
+.ng-thumb-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:24px;
+  padding:0 10px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#fff;
+  box-shadow:0 8px 18px rgba(0,0,0,.24);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+
+/* Badge Colors */
+.ng-thumb-badge.is-new{
+  background:#ffffff;
+  color:#111;
+}
+
+.ng-thumb-badge.is-trending{
+  background:#f4c300;
+  color:#111;
+}
+
+.ng-thumb-badge.is-hot{
+  background:#ff2d2d;
+  color:#fff;
+}
+
+.ng-thumb-badge.is-spoiler{
+  background:#111;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.24);
+}
+
+.ng-thumb-badge.is-offair{
+  background:#b91c1c;
+  color:#fff;
+}
+
+.ng-thumb-badge.is-premiere{
+  background:#2563eb;
+  color:#fff;
+}
+
+/*==================================
+CONTENT
+==================================*/
+
+.ng-card-content{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding-right:4px;
+}
+
+.ng-card-category{
+  display:inline-flex;
+  width:max-content;
+  min-height:24px;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px;
+  margin-bottom:10px;
+  border-radius:999px;
+  background:rgba(124,58,237,.14);
+  color:var(--ng-primary-2);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.ng-card-title{
+  margin:0;
+  font-size:22px;
+  font-weight:800;
+  line-height:1.28;
+  letter-spacing:-.02em;
+  color:#fff;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.ng-card-desc{
+  margin:10px 0 0;
+  font-size:15px;
+  line-height:1.7;
+  color:var(--ng-text-light);
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.ng-card-meta{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:auto;
+  padding-top:12px;
+  color:var(--ng-text-muted);
+  font-size:13px;
+}
+
+.ng-card-meta span{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/*==================================
+CARD ACTION
+==================================*/
+
+.ng-card-arrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 24px;
+  width:24px;
+  color:rgba(255,255,255,.7);
+  margin-left:2px;
+  transition:var(--ng-transition);
+}
+
+.ng-card:hover .ng-card-arrow{
+  color:#fff;
+  transform:translateX(2px);
+}
+
+/*==================================
+TRENDING LIST
+==================================*/
+
+.ng-trending-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.ng-trending-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:var(--ng-transition);
+}
+
+.ng-trending-item:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.ng-trending-item:hover{
+  transform:translateX(2px);
+}
+
+.ng-trending-num{
+  flex:0 0 30px;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--ng-gradient);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  box-shadow:0 8px 16px rgba(124,58,237,.25);
+}
+
+.ng-trending-thumb{
+  flex:0 0 66px;
+  width:66px;
+  height:48px;
+  border-radius:10px;
+  overflow:hidden;
+  background:#1b2030;
+}
+
+.ng-trending-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.ng-trending-content{
+  min-width:0;
+  flex:1;
+}
+
+.ng-trending-title{
+  margin:0;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.45;
+  color:#fff;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/*==================================
+LATEST LIST
+==================================*/
+
+.ng-latest-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.ng-latest-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:var(--ng-transition);
+}
+
+.ng-latest-item:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.ng-latest-item:hover{
+  transform:translateX(2px);
+}
+
+.ng-latest-thumb{
+  flex:0 0 56px;
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#1b2030;
+}
+
+.ng-latest-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.ng-latest-content{
+  min-width:0;
+  flex:1;
+}
+
+.ng-latest-title{
+  margin:0;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.45;
+  color:#fff;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.ng-latest-meta{
+  margin-top:4px;
+  font-size:12px;
+  color:var(--ng-text-muted);
+}
+
+/*==================================
+CATEGORIES LIST
+==================================*/
+
+.ng-categories-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.ng-category-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:var(--ng-transition);
+}
+
+.ng-category-item:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.ng-category-item:hover{
+  transform:translateX(2px);
+}
+
+.ng-category-name{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+}
+
+.ng-category-count{
+  flex:0 0 auto;
+  min-width:34px;
+  height:24px;
+  padding:0 10px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.05);
+  color:var(--ng-text-light);
+  font-size:12px;
+  font-weight:700;
+}
+
+/*==================================
+PAGINATION BUTTONS
+==================================*/
+
+.ng-page-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:40px;
+  height:40px;
+  padding:0 12px;
+  border-radius:10px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--ng-text-light);
+  font-size:14px;
+  font-weight:600;
+  line-height:1;
+  transition:var(--ng-transition);
+  user-select:none;
+}
+
+.ng-page-btn:hover{
+  background:rgba(124,58,237,.12);
+  border-color:rgba(124,58,237,.30);
+  color:#fff;
+  transform:translateY(-1px);
+}
+
+.ng-page-btn.is-active{
+  background:var(--ng-gradient);
+  border-color:transparent;
+  color:#fff;
+  box-shadow:0 10px 24px rgba(124,58,237,.25);
+}
+
+.ng-page-btn.is-disabled{
+  opacity:.45;
+  pointer-events:none;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.ng-page-ellipsis{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:20px;
+  height:40px;
+  color:var(--ng-text-muted);
+  font-size:14px;
+  font-weight:700;
+}
+
+/*==================================
+ANIMATION STATES
+==================================*/
+
+.ng-fade-in{
+  animation:ngFadeIn .35s ease both;
+}
+
+.ng-fade-out{
+  animation:ngFadeOut .25s ease both;
+}
+
+@keyframes ngFadeIn{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes ngFadeOut{
+  from{
+    opacity:1;
+    transform:translateY(0);
+  }
+  to{
+    opacity:0;
+    transform:translateY(12px);
+  }
+}
+
+/*==================================
+RESPONSIVE
+==================================*/
+
+@media(max-width:991px){
+  .ng-card{
+    flex-direction:column;
+  }
+
+  .ng-card-thumb{
+    width:100%;
+    flex:unset;
+    min-height:220px;
+  }
+
+  .ng-card-arrow{
+    display:none;
+  }
+
+  .ng-card-title{
+    font-size:18px;
+  }
+
+  .ng-trending-item,
+  .ng-latest-item{
+    padding:10px 0;
+  }
+
+  .ng-trending-thumb{
+    flex:0 0 62px;
+    width:62px;
+    height:46px;
+  }
+}
+
+@media(max-width:767px){
+  .ng-card{
+    padding:12px;
+    gap:12px;
+    border-radius:16px;
+  }
+
+  .ng-card-thumb{
+    min-height:190px;
+    border-radius:12px;
+  }
+
+  .ng-card-title{
+    font-size:16px;
+  }
+
+  .ng-card-desc{
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  .ng-card-meta{
+    gap:12px;
+    font-size:12px;
+  }
+
+  .ng-widget{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .ng-widget-title{
+    font-size:17px;
+  }
+
+  .ng-category-name{
+    font-size:13px;
+  }
+
+  .ng-category-count{
+    height:22px;
+    min-width:30px;
+    font-size:11px;
+  }
+
+  .ng-page-btn{
+    min-width:36px;
+    height:36px;
+    padding:0 10px;
+    font-size:12px;
+    border-radius:9px;
+  }
+
+  .ng-page-ellipsis{
+    height:36px;
+    font-size:12px;
+  }
+}
+
+@media(max-width:480px){
+  .ng-card-thumb{
+    min-height:170px;
+  }
+
+  .ng-card-title{
+    font-size:15px;
+  }
+
+  .ng-card-desc{
+    font-size:12px;
+  }
+
+  .ng-trending-thumb{
+    flex:0 0 56px;
+    width:56px;
+    height:42px;
+  }
+
+  .ng-latest-thumb{
+    flex:0 0 52px;
+    width:52px;
+    height:52px;
+  }
+
+  .ng-filter-tabs{
+    gap:7px;
+  }
+
+  .ng-filter-btn{
+    height:36px;
+    padding:0 14px;
+    font-size:12px;
+  }
+
+  .ng-pagination{
+    gap:6px;
+  }
+}
+
+/*==================================================
+NEWS & GOSSIPS PAGE
+PART 3
+SLIDER POLISH + MINI CARDS
+==================================================*/
+
+/*==================================
+SLIDER TRANSITION
+==================================*/
+
+.ng-slide{
+  opacity:0;
+  transform:scale(1.01);
+  transition:opacity .45s ease, transform .45s ease;
+  pointer-events:none;
+}
+
+.ng-slide.is-active{
+  opacity:1;
+  transform:scale(1);
+  pointer-events:auto;
+}
+
+/*==================================
+SLIDE IMAGE OVERLAY DETAIL
+==================================*/
+
+.ng-slide-image{
+  filter:brightness(.86) saturate(1.05);
+}
+
+/*==================================
+SLIDE PAGER COUNTER
+==================================*/
+
+.ng-slide-counter{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:16px;
+  padding:6px 12px;
+  width:max-content;
+  border-radius:999px;
+  background:rgba(0,0,0,.32);
+  border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.85);
+  font-size:12px;
+  font-weight:600;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+/*==================================
+MINI HERO CARDS
+==================================*/
+
+.ng-hero-mini{
+  transition:var(--ng-transition);
+}
+
+.ng-hero-mini:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(0,0,0,.45);
+}
+
+.ng-hero-mini-content{
+  justify-content:space-between;
+}
+
+.ng-hero-mini-badge{
+  box-shadow:0 8px 18px rgba(0,0,0,.22);
+}
+
+/*==================================
+MINI HERO TITLES
+==================================*/
+
+.ng-hero-mini-title{
+  max-width:100%;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/*==================================
+HERO SIDE STACK
+==================================*/
+
+.ng-hero-side{
+  min-width:0;
+}
+
+/*==================================
+HERO SIDE FIRST CARD LARGER FEEL
+==================================*/
+
+.ng-hero-mini:first-child{
+  min-height:120px;
+}
+
+.ng-hero-mini:first-child .ng-hero-mini-content{
+  min-height:120px;
+}
+
+.ng-hero-mini:first-child .ng-hero-mini-title{
+  font-size:15px;
+}
+
+/*==================================
+SLIDER ARROWS ACTIVE FEEL
+==================================*/
+
+.ng-slider-prev:active,
+.ng-slider-next:active{
+  transform:translateY(-50%) scale(.96);
+}
+
+/*==================================
+DOT CONTAINER ACTIVE SPACE
+==================================*/
+
+.ng-slider-dots{
+  pointer-events:auto;
+}
+
+.ng-slider-dot{
+  cursor:pointer;
+}
+
+/*==================================
+CATEGORY MENU STICKY
+==================================*/
+
+.ng-filter-section{
+  position:sticky;
+  top:0;
+  z-index:15;
+  padding:10px 0 12px;
+  margin-top:-4px;
+  background:linear-gradient(180deg, rgba(9,9,15,.98) 0%, rgba(9,9,15,.92) 100%);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/*==================================
+MAIN GRID TIGHTER LOOK
+==================================*/
+
+.ng-layout{
+  margin-top:4px;
+}
+
+/*==================================
+NEWS LIST SECTION POLISH
+==================================*/
+
+.ng-list-section{
+  position:relative;
+}
+
+.ng-list{
+  animation:ngFadeIn .35s ease both;
+}
+
+/*==================================
+PAGE TRANSITION
+==================================*/
+
+.ng-page-switch{
+  animation:ngFadeOut .22s ease both;
+}
+
+/*==================================
+TRENDING BADGE DOT
+==================================*/
+
+.ng-widget-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.ng-widget-title::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--ng-primary-2);
+  box-shadow:0 0 0 4px rgba(168,85,247,.12);
+  flex-shrink:0;
+}
+
+/*==================================
+CATEGORY ITEM HOVER
+==================================*/
+
+.ng-category-item:hover .ng-category-name{
+  color:#fff;
+}
+
+.ng-category-item:hover .ng-category-count{
+  background:rgba(124,58,237,.18);
+  color:#fff;
+}
+
+/*==================================
+CARD TITLE LINE CLAMP
+==================================*/
+
+.ng-card-title{
+  max-width:100%;
+}
+
+.ng-card-desc{
+  max-width:100%;
+}
+
+/*==================================
+SIDEBAR CARD SPACING
+==================================*/
+
+.ng-sidebar .ng-widget{
+  transition:var(--ng-transition);
+}
+
+.ng-sidebar .ng-widget:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 50px rgba(0,0,0,.48);
+}
+
+/*==================================
+DESKTOP FIX
+==================================*/
+
+@media(min-width:992px){
+  .ng-hero-side{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .ng-hero-mini{
+    min-height:102px;
+  }
+
+  .ng-hero-mini-content{
+    min-height:102px;
+  }
+}
+
+/*==================================
+TABLET FIX
+==================================*/
+
+@media(max-width:991px){
+  .ng-filter-section{
+    top:0;
+    margin-top:0;
+  }
+
+  .ng-hero-mini:first-child{
+    min-height:100px;
+  }
+
+  .ng-hero-mini:first-child .ng-hero-mini-content{
+    min-height:100px;
+  }
+}
+
+/*==================================
+MOBILE FIX
+==================================*/
+
+@media(max-width:767px){
+  .ng-filter-section{
+    padding:8px 0 10px;
+  }
+
+  .ng-slide-counter{
+    margin-top:12px;
+    font-size:11px;
+    padding:5px 10px;
+  }
+
+  .ng-hero-mini:first-child{
+    min-height:88px;
+  }
+
+  .ng-hero-mini:first-child .ng-hero-mini-content{
+    min-height:88px;
+  }
+
+  .ng-hero-mini:first-child .ng-hero-mini-title{
+    font-size:13px;
+  }
+}
+
+@media(max-width:480px){
+  .ng-filter-section{
+    padding:6px 0 8px;
+  }
+
+  .ng-slider-prev,
+  .ng-slider-next{
+    width:36px;
+    height:36px;
+  }
+
+  .ng-slide-counter{
+    display:none;
+  }
+
+  .ng-hero-mini:first-child .ng-hero-mini-title{
+    font-size:12px;
+  }
+}
+
+/*==================================================
+NEWS & GOSSIPS PAGE
+PART 4
+LOADING + EMPTY + FINAL RESPONSIVE
+==================================================*/
+
+/*==================================
+LOADING STATE
+==================================*/
+
+.ng-loading{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:220px;
+  padding:20px;
+  border-radius:18px;
+  background:var(--ng-surface);
+  border:1px solid var(--ng-border-soft);
+  box-shadow:var(--ng-shadow);
+  color:var(--ng-text-light);
+  font-size:14px;
+  text-align:center;
+  position:relative;
+}
+
+.ng-loading::after{
+  content:"";
+  width:10px;
+  height:10px;
+  margin-left:10px;
+  border-radius:50%;
+  background:var(--ng-primary);
+  box-shadow:
+    16px 0 0 rgba(124,58,237,.55),
+    32px 0 0 rgba(124,58,237,.30);
+  animation:ngLoaderDots 1s infinite ease-in-out;
+}
+
+@keyframes ngLoaderDots{
+  0%, 80%, 100%{
+    transform:translateY(0);
+    opacity:.7;
+  }
+  40%{
+    transform:translateY(-4px);
+    opacity:1;
+  }
+}
+
+/*==================================
+EMPTY STATE
+==================================*/
+
+.ng-empty{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:220px;
+  padding:20px;
+  border-radius:18px;
+  background:var(--ng-surface);
+  border:1px dashed rgba(255,255,255,.12);
+  color:var(--ng-text-muted);
+  font-size:14px;
+  text-align:center;
+}
+
+/*==================================
+LIST FADE SWITCH
+==================================*/
+
+.ng-list.is-refreshing{
+  opacity:.55;
+  transform:translateY(10px);
+  filter:saturate(.9);
+  transition:opacity .22s ease, transform .22s ease, filter .22s ease;
+}
+
+/*==================================
+SIDEBAR ORDER HELP
+==================================*/
+
+.ng-sidebar .ng-trending-widget{
+  order:1;
+}
+
+.ng-sidebar .ng-latest-widget{
+  order:2;
+}
+
+.ng-sidebar .ng-categories-widget{
+  order:3;
+}
+
+/*==================================
+PAGINATION POLISH
+==================================*/
+
+.ng-pagination-wrap{
+  padding-top:4px;
+}
+
+.ng-pagination{
+  animation:ngFadeIn .35s ease both;
+}
+
+.ng-page-btn{
+  cursor:pointer;
+}
+
+/*==================================
+HERO SIDE LAYOUT REFINEMENT
+==================================*/
+
+.ng-hero-side{
+  align-self:stretch;
+}
+
+/*==================================
+FINAL RESPONSIVE
+==================================*/
+
+@media(max-width:991px){
+  .ng-filter-section{
+    position:sticky;
+    top:0;
+    z-index:15;
+    margin-top:0;
+  }
+
+  .ng-sidebar{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+  }
+
+  .ng-widget{
+    margin:0;
+  }
+
+  .ng-hero-side{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+
+  .ng-loading,
+  .ng-empty{
+    min-height:180px;
+  }
+}
+
+@media(max-width:767px){
+  .ng-sidebar{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .ng-hero-side{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .ng-loading,
+  .ng-empty{
+    min-height:160px;
+    padding:18px;
+    border-radius:16px;
+    font-size:13px;
+  }
+
+  .ng-list{
+    gap:10px;
+  }
+}
+
+@media(max-width:480px){
+  .ng-hero-side{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .ng-loading,
+  .ng-empty{
+    min-height:140px;
+    padding:16px;
+    font-size:12px;
+  }
+
+  .ng-pagination{
+    gap:5px;
+  }
+}
