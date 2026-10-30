@@ -1,0 +1,153 @@
+/* =========================
+MUSIC PAGE FIX PATCH
+Paste at END of CSS
+========================= */
+
+/* Category menu: never overflow page */
+.pr-music-page{
+overflow-x:hidden;
+}
+
+.pr-music-menu-wrap{
+position:relative;
+z-index:80;
+overflow:visible !important;
+max-width:100%;
+}
+
+.pr-music-menu{
+display:flex;
+flex-wrap:nowrap;
+align-items:center;
+gap:10px;
+overflow-x:auto;
+overflow-y:visible;
+white-space:nowrap;
+padding:2px 2px 12px;
+scrollbar-width:none;
+-ms-overflow-style:none;
+-webkit-overflow-scrolling:touch;
+touch-action:pan-x;
+max-width:100%;
+}
+
+.pr-music-menu::-webkit-scrollbar{
+display:none;
+}
+
+.pr-music-menu__btn,
+.pr-music-menu__link,
+.pr-dropdown{
+flex:0 0 auto;
+}
+
+.pr-music-menu__btn,
+.pr-music-menu__link{
+white-space:nowrap;
+}
+
+/* Dropdown must open above and not get clipped */
+.pr-music-menu__drop{
+position:relative;
+overflow:visible !important;
+}
+
+.pr-dropdown__list{
+position:absolute;
+top:calc(100% + 10px);
+left:0;
+z-index:99999;
+min-width:220px;
+max-width:calc(100vw - 24px);
+max-height:280px;
+overflow:auto;
+box-shadow:0 14px 30px rgba(0,0,0,.45);
+}
+
+.pr-dropdown.is-open .pr-dropdown__list{
+display:block;
+}
+
+/* Mobile: keep menu inside screen */
+@media (max-width: 720px){
+.pr-music-menu-wrap{
+padding-right:0;
+}
+
+.pr-music-menu{
+gap:8px;
+padding-bottom:10px;
+}
+
+.pr-music-menu__btn,
+.pr-music-menu__link{
+height:40px;
+padding:0 14px;
+font-size:.9rem;
+}
+
+.pr-dropdown__list{
+min-width:200px;
+max-width:calc(100vw - 20px);
+}
+}
+
+@media (max-width: 420px){
+.pr-music-menu__btn,
+.pr-music-menu__link{
+height:38px;
+padding:0 12px;
+font-size:.86rem;
+}
+}
+
+/* Sidebar taxonomy: one box with many items */
+.pr-sidebar-taxonomy{
+display:grid;
+grid-template-columns:repeat(2, minmax(0, 1fr));
+gap:10px;
+}
+
+.pr-tax-item{
+width:100%;
+min-width:0;
+}
+
+.pr-tax-item__name{
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+}
+
+@media (max-width: 560px){
+.pr-sidebar-taxonomy{
+grid-template-columns:1fr;
+}
+}
+
+/* All music cards: no description/highlight */
+.pr-music-grid--all .pr-card__highlight,
+.pr-music-grid--filter .pr-card__highlight{
+display:none !important;
+}
+
+/* Latest cards: keep description short */
+.pr-sidebar-list__item span{
+overflow:hidden;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+}
+
+/* Album track pill top-left */
+.pr-music-grid--album .pr-card__track{
+top:10px;
+left:10px;
+right:auto;
+bottom:auto;
+}
+
+/* Hero: no empty badge box */
+.pr-music-hero__badge{
+display:none;
+}
