@@ -182,7 +182,7 @@ display:none;
 
 .pr-music-hero__title{
 margin:0;
-font-size:clamp(1.4rem, 3vw, 2.8rem);
+font-size:clamp(1.rem, 2.2vw, 2.rem);
 line-height:1.08;
 max-width:780px;
 }
