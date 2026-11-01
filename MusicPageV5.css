@@ -1183,6 +1183,9 @@ font-size:1.18rem;
 }
 
 .pr-music-hero__highlight{
-display:none;
-}
+    display:-webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    font-size:.85rem;
 }
