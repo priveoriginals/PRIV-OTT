@@ -560,87 +560,189 @@ gap:10px;
 min-width:0;
 }
 
-.pr-video-list-item__link{
+/* ---------- Latest / Trailer / Music ---------- */
+
+.pr-video-list:not(.pr-video-list--trending) .pr-video-list-item__link{
 display:grid;
-grid-template-columns:32px 92px minmax(0,1fr);
+grid-template-columns:110px minmax(0,1fr);
+gap:12px;
+align-items:center;
+padding:8px;
+border-radius:14px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+transition:.25s;
+}
+
+.pr-video-list:not(.pr-video-list--trending) .pr-video-list-item__link:hover{
+background:rgba(138,43,226,.10);
+border-color:rgba(138,43,226,.30);
+transform:translateY(-2px);
+}
+
+/* ---------- Trending ---------- */
+
+.pr-video-list--trending .pr-video-list-item__link{
+display:grid;
+grid-template-columns:28px 92px minmax(0,1fr);
 gap:10px;
 align-items:center;
 padding:8px;
 border-radius:14px;
 background:rgba(255,255,255,.03);
 border:1px solid rgba(255,255,255,.08);
-transition:background .2s ease, transform .2s ease, border-color .2s ease;
+transition:.25s;
 }
 
-.pr-video-list-item__link:hover{
+.pr-video-list--trending .pr-video-list-item__link:hover{
 background:rgba(138,43,226,.10);
+border-color:rgba(138,43,226,.30);
 transform:translateY(-2px);
-border-color:rgba(138,43,226,.3);
 }
+
+/* ---------- Rank ---------- */
 
 .pr-video-list-item__index{
 width:28px;
 height:28px;
-border-radius:50%;
 display:grid;
 place-items:center;
-background:rgba(255,255,255,.08);
-color:#fff;
-font-size:.78rem;
-font-weight:800;
-flex:0 0 auto;
+font-size:18px;
+font-weight:700;
+color:#9b4dff;
+background:none;
+border-radius:0;
 }
+
+/* ---------- Thumbnail ---------- */
 
 .pr-video-list-item__thumb{
 position:relative;
-aspect-ratio:16/9;
+width:110px;
+height:62px;
 overflow:hidden;
 border-radius:5px;
 background:var(--pr-surface-2);
+flex:0 0 110px;
+}
+
+.pr-video-list--trending .pr-video-list-item__thumb{
+width:92px;
+height:52px;
+flex:0 0 92px;
 }
 
 .pr-video-list-item__thumb img{
 width:100%;
 height:100%;
+display:block;
 object-fit:cover;
 object-position:center;
-display:block;
 }
+
+/* ---------- Duration ---------- */
 
 .pr-video-list-item__duration{
 position:absolute;
-right:6px;
-bottom:6px;
-padding:3px 6px;
-border-radius:4px;
-background:rgba(0,0,0,.78);
+right:4px;
+bottom:4px;
+padding:2px 5px;
+background:rgba(0,0,0,.80);
 color:#fff;
-font-size:.68rem;
-font-weight:700;
+font-size:10px;
+font-weight:600;
 line-height:1;
+border-radius:4px;
 }
+
+/* ---------- Content ---------- */
 
 .pr-video-list-item__body{
 min-width:0;
+overflow:hidden;
 }
+
+/* Purple Content Title */
+
+.pr-video-list-item__content-title{
+margin:0 0 3px;
+color:var(--pr-purple);
+font-size:.72rem;
+font-weight:600;
+line-height:1.2;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+/* Episode / Video Title */
 
 .pr-video-list-item__title{
 margin:0 0 4px;
-font-size:.92rem;
-line-height:1.35;
 color:#fff;
+font-size:.92rem;
 font-weight:600;
-}
-
-.pr-video-list-item__desc{
-margin:0;
-color:var(--pr-muted);
-font-size:.8rem;
 line-height:1.35;
+
 display:-webkit-box;
 -webkit-line-clamp:2;
 -webkit-box-orient:vertical;
 overflow:hidden;
+}
+
+/* Description */
+
+.pr-video-list-item__desc{
+margin:0;
+color:var(--pr-muted);
+font-size:.78rem;
+line-height:1.4;
+
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
+
+/*==========================
+  TRENDING SIDEBAR
+==========================*/
+
+.pr-sidebar-item--trending{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.pr-sidebar-rank{
+    width:26px;
+    flex:0 0 26px;
+
+    font-size:18px;
+    font-weight:700;
+    color:#9b4dff;
+
+    text-align:center;
+    line-height:1;
+}
+
+.pr-sidebar-item--trending .pr-sidebar-thumb{
+    width:90px;
+    min-width:90px;
+    height:52px;
+}
+
+.pr-sidebar-item--trending .pr-sidebar-content{
+    flex:1;
+    min-width:0;
+}
+
+.pr-sidebar-item--trending .pr-sidebar-title{
+    font-size:14px;
+}
+
+.pr-sidebar-item--trending .pr-sidebar-desc{
+    font-size:12px;
 }
 
 /* =========================
