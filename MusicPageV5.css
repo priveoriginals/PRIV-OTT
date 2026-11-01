@@ -232,10 +232,12 @@ background:rgba(138,43,226,.35);
 
 .pr-music-hero__dots{
 position:absolute;
-left:24px;
+left:50%;
+transform:translateX(-50%);
 bottom:18px;
 display:flex;
 align-items:center;
+justify-content:center;
 gap:8px;
 z-index:5;
 }
@@ -1121,7 +1123,8 @@ border-radius:22px;
 }
 
 .pr-music-hero__dots{
-left:16px;
+left:50%;
+transform:translateX(-50%);
 bottom:14px;
 }
 
