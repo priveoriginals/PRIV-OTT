@@ -619,7 +619,7 @@ border-radius:0;
 .pr-video-list-item__thumb{
 position:relative;
 width:110px;
-height:62px;
+aspect-ratio:16/9;
 overflow:hidden;
 border-radius:5px;
 background:var(--pr-surface-2);
@@ -919,7 +919,7 @@ grid-template-columns:24px 84px minmax(0,1fr);
 }
 
 .pr-video-list-item__thumb{
-width:84px;
+width:95px;
 }
 
 .pr-video-list-item__desc{
